@@ -1,0 +1,5 @@
+- VPC
+- 複数のpublic/private Subnetを作成
+- NAT Gateway用のEIP
+- Internet Gateway, NAT Gatewayを作成
+- RouteTableをpublic/private用に作成
