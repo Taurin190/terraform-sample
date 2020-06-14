@@ -15,7 +15,25 @@ resource "aws_vpc" "vpc" {
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.vpc.id
   tags = {
-    Name = "main"
+    Name = "sample3-igw"
+  }
+}
+
+resource "aws_eip" "nat_gateway" {
+  vpc        = true
+  depends_on = [aws_internet_gateway.igw]
+  tags = {
+    Name    = "sample3-nat-eip"
+  }
+}
+
+resource "aws_nat_gateway" "nat_gateway" {
+  allocation_id = aws_eip.nat_gateway.id
+  subnet_id     = aws_subnet.public-a.id
+  depends_on    = [aws_internet_gateway.igw]
+
+  tags = {
+    Name    = "sample3-nat-gw"
   }
 }
 
@@ -99,3 +117,8 @@ resource "aws_route" "public" {
   destination_cidr_block = "0.0.0.0/0"
 }
 
+resource "aws_route" "private" {
+  route_table_id         = aws_route_table.private.id
+  gateway_id             = aws_nat_gateway.nat_gateway.id
+  destination_cidr_block = "0.0.0.0/0"
+}
