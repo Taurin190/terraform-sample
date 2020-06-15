@@ -43,3 +43,7 @@ variable "subnet_name_tag" {
     private-c = "sample3-private-subnet-c"
   }
 }
+
+variable "elb_name" {
+  default = "sample3-lb"
+}
