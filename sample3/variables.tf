@@ -29,7 +29,9 @@ variable "subnet_cidr" {
     public-a  = "10.2.10.0/24"
     public-c  = "10.2.20.0/24"
     private-a = "10.2.100.0/24"
-    private-c = "10.2.200.0/24"
+    private-c = "10.2.110.0/24"
+    db-a      = "10.2.200.0/24"
+    db-c      = "10.2.210.0/24"
   }
 }
 
@@ -50,4 +52,12 @@ variable "elb_name" {
 
 variable "tg_name" {
   default = "sample3-tg"
+}
+
+variable "lc_name" {
+  default = "sample3-web"
+}
+
+variable "web_image_id" {
+  default = "ami-0a1c2ec61571737db"
 }
