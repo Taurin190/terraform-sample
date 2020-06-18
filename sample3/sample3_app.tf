@@ -45,13 +45,6 @@ resource "aws_alb_target_group" "sample3lb" {
   }
 }
 
-# resource "aws_alb_target_group_attachment" "sample3-lb" {
-#   count            = 2
-#   target_group_arn = aws_alb_target_group.sample3-lb.*.arn
-#   target_id        = aws_spot_instance_request.web.*.spot_instance_id
-#   port             = 80
-# }
-
 resource "aws_alb" "sample3lb" {
     name = var.elb_name
     subnets = [aws_subnet.public-a.id, aws_subnet.public-c.id]
