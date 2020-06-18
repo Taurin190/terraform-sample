@@ -47,3 +47,7 @@ variable "subnet_name_tag" {
 variable "elb_name" {
   default = "sample3-lb"
 }
+
+variable "tg_name" {
+  default = "sample3-tg"
+}
