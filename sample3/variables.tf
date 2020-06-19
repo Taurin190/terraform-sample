@@ -43,6 +43,8 @@ variable "subnet_name_tag" {
     public-c  = "sample3-public-subnet-c"
     private-a = "sample3-private-subnet-a"
     private-c = "sample3-private-subnet-c"
+    db-a      = "sample3-db-subnet-a"
+    db-c      = "sample3-db-subnet-c"
   }
 }
 
