@@ -63,3 +63,7 @@ variable "lc_name" {
 variable "web_image_id" {
   default = "ami-0a1c2ec61571737db"
 }
+
+variable "db_name" {
+  default = "sample3-db"
+}
