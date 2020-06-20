@@ -65,5 +65,13 @@ variable "web_image_id" {
 }
 
 variable "db_name" {
-  default = "sample3-db"
+  default = "sample3db"
+}
+
+variable "db_username" {
+  default = "sample3"
+}
+
+variable "db_password" {
+  default = "password123"
 }

@@ -5,6 +5,19 @@ resource "aws_security_group" "web" {
 
 }
 
+resource "aws_security_group_rule" "inbound_web_ssh" {
+  type        = "ingress"
+  from_port   = 22
+  to_port     = 22
+  protocol    = "tcp"
+  cidr_blocks = [
+    var.subnet_cidr["public-a"],
+    var.subnet_cidr["public-c"]
+  ]
+
+  security_group_id = aws_security_group.web.id
+}
+
 resource "aws_security_group_rule" "inbound_web_http" {
   type        = "ingress"
   from_port   = 80
