@@ -62,7 +62,7 @@ resource "aws_subnet" "public-a" {
   vpc_id            = aws_vpc.vpc.id
   cidr_block        = var.subnet_cidr["public-a"]
   availability_zone = var.aws_availability_zones["a"]
-
+  map_public_ip_on_launch=true
   tags = {
     Name = var.subnet_name_tag["public-a"]
   }
@@ -72,7 +72,7 @@ resource "aws_subnet" "public-c" {
   vpc_id            = aws_vpc.vpc.id
   cidr_block        = var.subnet_cidr["public-c"]
   availability_zone = var.aws_availability_zones["c"]
-
+  map_public_ip_on_launch=true
   tags = {
     Name = var.subnet_name_tag["public-a"]
   }

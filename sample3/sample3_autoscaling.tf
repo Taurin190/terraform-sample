@@ -74,11 +74,12 @@ resource "aws_launch_configuration" "web_conf" {
   name          = var.lc_name
   image_id      = var.web_image_id
   instance_type = "t2.micro"
+  key_name = aws_key_pair.sample3.id
   security_groups = [aws_security_group.web.id]
 }
 
 resource "aws_autoscaling_group" "sample3_as_group" {
-  name                 = "example3_as_group"
+  name                 = "sample3_as_group"
   launch_configuration = aws_launch_configuration.web_conf.name
   min_size             = 1
   max_size             = 1
