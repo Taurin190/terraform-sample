@@ -12,6 +12,9 @@ resource "aws_rds_cluster" "example3" {
   availability_zones = [var.aws_availability_zones["a"], var.aws_availability_zones["c"]]
   engine_mode = "serverless"
   db_subnet_group_name = aws_db_subnet_group.db.id
+  skip_final_snapshot = true
+  final_snapshot_identifier = "latest"
+
   master_username = var.db_username
   master_password = var.db_password
   scaling_configuration {
