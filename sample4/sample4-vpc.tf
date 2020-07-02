@@ -24,5 +24,27 @@ resource "aws_subnet" "web" {
   }
 }
 
+resource "aws_subnet" "app" {
+  count = length(var.aws_availability_zones[var.aws_region])
+  vpc_id            = aws_vpc.vpc.id
+  cidr_block        = element(var.subnet_cidrs["app"], count.index)
+  availability_zone = element(var.aws_availability_zones[var.aws_region], count.index)
+  map_public_ip_on_launch=true
+  tags = {
+    Name = element(var.subnet_name_tag["app"], count.index)
+  }
+}
+
+resource "aws_subnet" "db" {
+  count = length(var.aws_availability_zones[var.aws_region])
+  vpc_id            = aws_vpc.vpc.id
+  cidr_block        = element(var.subnet_cidrs["db"], count.index)
+  availability_zone = element(var.aws_availability_zones[var.aws_region], count.index)
+  map_public_ip_on_launch=true
+  tags = {
+    Name = element(var.subnet_name_tag["db"], count.index)
+  }
+}
+
 
 
